@@ -1,11 +1,10 @@
-import { FETCH_POSTS } from '../actions/index';
+import _ from 'lodash';
+import { FETCH_POSTS } from '../actions';
 
-const INITIAL_STATE = { all: [], post: null };
-
-export default function (state = INITIAL_STATE, action) {
+export default function (state = {}, action) {
   switch (action.type) {
     case FETCH_POSTS:
-      return {...state, all: action.payload.data };
+      return _.mapKeys(action.payload.data, 'id');
     default:
       return state;
   }

@@ -8,9 +8,7 @@ import reducers from './reducers';
 import promise from 'redux-promise';
 import PostsIndex from './components/posts_index.js';
 
-const createStoreWithMiddleware = applyMiddleware(
-  promise
-)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
