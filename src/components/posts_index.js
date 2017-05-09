@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchPosts } from '../actions/index';
+import { fetchPosts } from '../actions';
 
 class PostsIndex extends Component {
 
   //We put our action creator in here because it will only be called once
   //before the component mounts. It won't be called after each re-render.
-  componentWillMount() {
-    console.log('This would be a good time to call an action creator');
+  componentDidMount() {
+    this.props.fetchPosts();
   }
 
   render() {
@@ -18,4 +18,4 @@ class PostsIndex extends Component {
   }
 }
 
-export default PostsIndex;
+export default connect(null, { fetchPosts })(PostsIndex);
