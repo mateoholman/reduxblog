@@ -41,6 +41,29 @@ class PostsNew extends Component {
   }
 }
 
+//This helper function will be called automatically by the reduxForm function
+//below at various points during the lifecycle. Because the key/value pair is
+//the same, we just need to include the name, as done below.
+function validate(values) {
+  const errors = {};
+
+  //Validate the inputs of 'values'
+  if (!values.title) {
+    errors.title = "Enter a title!";
+  }
+  if (!values.categories) {
+    errors.categories = "Enter the categories!";
+  }
+  if (!values.content) {
+    errors.content = "Enter some content!";
+  }
+
+  //If errors is empty, the form is fine to submit. If errors has *any*
+  //properties, redux-form assumes the form is invalid.
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: 'PostsNewForm'
 })(PostsNew);
