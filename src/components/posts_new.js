@@ -12,7 +12,9 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
-        {field.meta.error}
+      <div className="text-help">
+        {field.meta.touched ? field.meta.error : ''}
+      </div>
       </div>
     );
   }
@@ -41,7 +43,7 @@ class PostsNew extends Component {
             name="content"
             component={this.renderField}
           />
-        <button type="submit" className="btn btn-primary"></button>
+        <button type="submit" className="btn btn-primary">Submit</button>
         </form>
       </div>
     );
